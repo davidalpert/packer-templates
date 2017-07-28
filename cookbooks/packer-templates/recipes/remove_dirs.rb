@@ -1,11 +1,9 @@
 powershell_script 'remove unnecesary directories' do
   code <<-EOH
   @(
-      "C:\\Recovery",
       "$env:localappdata\\Nuget",
       "$env:localappdata\\temp\\*",
-      "$env:windir\\logs",
-      "$env:windir\\winsxs\\manifestcache"
+      "$env:windir\\logs"
   ) | % {
           if(Test-Path $_) {
               Write-Host "Removing $_"
