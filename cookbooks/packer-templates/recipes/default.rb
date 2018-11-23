@@ -19,16 +19,12 @@ powershell_script 'lots of stuff' do
         Remove-Item C:/Windows/Temp/VBoxGuestAdditions.iso -Force
     }
 
-    Write-Host "Cleaning SxS..."
-    Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
-
     @(
         "$env:localappdata/Nuget",
         "$env:localappdata/temp/*",
         "$env:windir/logs",
         "$env:windir/panther",
-        "$env:windir/temp/*",
-        "$env:windir/winsxs/manifestcache"
+        "$env:windir/temp/*"
     ) | % {
             if(Test-Path $_) {
                 Write-Host "Removing $_"

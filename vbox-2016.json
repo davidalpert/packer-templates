@@ -28,13 +28,13 @@
   "provisioners": [
     {
       "type": "chef-solo",
+      "version": "12",
       "cookbook_paths": ["cookbooks", "vendor/cookbooks"],
       "guest_os_type": "windows",
       "run_list": [
         "wsus-client::configure",
         "packer-templates::install_ps_modules",
         "packer-templates::vbox_guest_additions",
-        "packer-templates::uninstall_powershell_ise",
         "packer-templates::delete_pagefile"
       ]
     },
@@ -56,6 +56,7 @@
     },
     {
       "type": "chef-solo",
+      "version": "12",
       "remote_cookbook_paths": [
         "c:/windows/temp/packer-chef-solo/cookbooks-0",
         "c:/windows/temp/packer-chef-solo/cookbooks-1"
@@ -65,7 +66,6 @@
       "run_list": [
         "packer-templates::enable_file_sharing",
         "packer-templates::remote_desktop",
-        "packer-templates::clean_sxs",
         "packer-templates::add_postunattend",
         "packer-templates::add_pagefile",
         "packer-templates::set_local_account_token_filter_policy",
